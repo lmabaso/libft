@@ -1,18 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmabaso <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/11 13:19:11 by lmabaso           #+#    #+#             */
-/*   Updated: 2017/08/25 13:33:06 by lmabaso          ###   ########.fr       */
+/*   Created: 2017/08/25 11:49:28 by lmabaso           #+#    #+#             */
+/*   Updated: 2017/08/25 13:20:46 by lmabaso          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+t_list  *ft_lstnew(void const *content, size_t content_size)
 {
-	ft_putnbr_fd(n, 1);
+	t_list *new;
+
+	if (!(new = (t_list *)malloc(sizeof(t_list))))
+		return (NULL);
+	if (!content)
+	{
+		new->content = NULL;
+		new->content_size = 0;
+	}
+	else
+	{
+		if (!(new->content = malloc(sizeof(content_size))))
+			return (NULL);
+		new->content = ft_memcpy(new->content, content, content_size);
+		new->content_size = content_size;
+	}
+	new->next = NULL;
+	return (new);
 }

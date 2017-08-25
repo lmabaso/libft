@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmabaso <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/11 13:19:11 by lmabaso           #+#    #+#             */
-/*   Updated: 2017/08/25 13:33:06 by lmabaso          ###   ########.fr       */
+/*   Created: 2017/08/25 13:05:57 by lmabaso           #+#    #+#             */
+/*   Updated: 2017/08/25 13:08:01 by lmabaso          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	ft_putnbr_fd(n, 1);
+	while (lst != NULL)
+	{
+		f(lst);
+		lst = lst->next;
+	}
 }
